@@ -1,0 +1,14 @@
+C:\Users\sulli\Desktop\Unity Projects\TempName_Server\TempName_Server\bin\Debug\TempName_Server.exe.config
+C:\Users\sulli\Desktop\Unity Projects\TempName_Server\TempName_Server\bin\Debug\TempName_Server.exe
+C:\Users\sulli\Desktop\Unity Projects\TempName_Server\TempName_Server\bin\Debug\TempName_Server.pdb
+C:\Users\sulli\Desktop\Unity Projects\TempName_Server\TempName_Server\obj\Debug\TempName_Server.csprojAssemblyReference.cache
+C:\Users\sulli\Desktop\Unity Projects\TempName_Server\TempName_Server\obj\Debug\TempName_Server.csproj.CoreCompileInputs.cache
+C:\Users\sulli\Desktop\Unity Projects\TempName_Server\TempName_Server\obj\Debug\TempName_Server.exe
+C:\Users\sulli\Desktop\Unity Projects\TempName_Server\TempName_Server\obj\Debug\TempName_Server.pdb
+C:\Users\sulli\Desktop\TempName_Project\TempName_Server\TempName_Server\bin\Debug\TempName_Server.exe.config
+C:\Users\sulli\Desktop\TempName_Project\TempName_Server\TempName_Server\bin\Debug\TempName_Server.exe
+C:\Users\sulli\Desktop\TempName_Project\TempName_Server\TempName_Server\bin\Debug\TempName_Server.pdb
+C:\Users\sulli\Desktop\TempName_Project\TempName_Server\TempName_Server\obj\Debug\TempName_Server.csprojAssemblyReference.cache
+C:\Users\sulli\Desktop\TempName_Project\TempName_Server\TempName_Server\obj\Debug\TempName_Server.csproj.CoreCompileInputs.cache
+C:\Users\sulli\Desktop\TempName_Project\TempName_Server\TempName_Server\obj\Debug\TempName_Server.exe
+C:\Users\sulli\Desktop\TempName_Project\TempName_Server\TempName_Server\obj\Debug\TempName_Server.pdb

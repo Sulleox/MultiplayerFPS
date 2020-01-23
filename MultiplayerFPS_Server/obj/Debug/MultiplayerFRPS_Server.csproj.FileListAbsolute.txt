@@ -1,0 +1,7 @@
+C:\Users\sulli\Desktop\MultiplayerFPS\MultiplayerFPS_Server\bin\Debug\TempName_Server.exe.config
+C:\Users\sulli\Desktop\MultiplayerFPS\MultiplayerFPS_Server\bin\Debug\TempName_Server.exe
+C:\Users\sulli\Desktop\MultiplayerFPS\MultiplayerFPS_Server\bin\Debug\TempName_Server.pdb
+C:\Users\sulli\Desktop\MultiplayerFPS\MultiplayerFPS_Server\obj\Debug\MultiplayerFRPS_Server.csprojAssemblyReference.cache
+C:\Users\sulli\Desktop\MultiplayerFPS\MultiplayerFPS_Server\obj\Debug\MultiplayerFRPS_Server.csproj.CoreCompileInputs.cache
+C:\Users\sulli\Desktop\MultiplayerFPS\MultiplayerFPS_Server\obj\Debug\TempName_Server.exe
+C:\Users\sulli\Desktop\MultiplayerFPS\MultiplayerFPS_Server\obj\Debug\TempName_Server.pdb
