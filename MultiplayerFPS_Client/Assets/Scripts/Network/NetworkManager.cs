@@ -3,14 +3,18 @@ using System.Text;
 using System.Net.Sockets;
 
 using UnityEngine;
-using UnityEngine.UI;
+using System.Threading;
 
 public class NetworkManager : MonoBehaviour
 {
-    [SerializeField] private Slider _slider;
-
     private const int portNum = 8001;
     private const string hostName = "88.122.180.44";
+
+    private TcpClient _tcpClient;
+    private NetworkStream _networkStream;
+
+    private NetworkReceiver _networkReceiver;
+    private Thread _networkReceiverThread;
 
     private void Start()
     {
@@ -21,17 +25,15 @@ public class NetworkManager : MonoBehaviour
     {
         try
         {
-            var client = new TcpClient(hostName, portNum);
+            // Loggin to server
+            _tcpClient = new TcpClient(hostName, portNum);
+            _networkStream = _tcpClient.GetStream();
+            User newUser = new User(_tcpClient, _networkStream);
 
-            NetworkStream ns = client.GetStream();
-
-            byte[] bytes = new byte[1024];
-            int bytesRead = ns.Read(bytes, 0, bytes.Length);
-
-            Debug.Log("[CLIENT] " + Encoding.ASCII.GetString(bytes, 0, bytesRead));
-            _slider.value = _slider.maxValue;
-
-            client.Close();
+            // Creating network receiver
+            _networkReceiver = new NetworkReceiver(newUser);
+            _networkReceiverThread = new Thread(new ThreadStart(_networkReceiver.Process));
+            _networkReceiverThread.Start();
         }
         catch (Exception e)
         {
@@ -39,4 +41,9 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        _networkReceiverThread.Abort();
+        _tcpClient.Close();
+    }
 }

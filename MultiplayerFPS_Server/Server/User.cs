@@ -22,10 +22,20 @@ namespace MultiplayerFPS_Server.Server
             }
         }
 
-        public User(TcpClient client, NetworkStream networkStream)
+        private int _userID;
+        public int UserID
+        {
+            get
+            {
+                return _userID;
+            }
+        }
+
+        public User(TcpClient client, NetworkStream networkStream, int userID)
         {
             _tcpClient = client;
             _networkStream = networkStream;
+            _userID = userID;
         }
     }
 }
