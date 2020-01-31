@@ -41,7 +41,7 @@ namespace MultiplayerFPS_Server
                 User newUser = new User(client, ns, GenerateNextUserID());
                 _users.Add(newUser);
 
-                newUser.MessageSender.SendMessage("[SERVER To CLIENT] Welcome on the server ");
+                newUser.MessageSender.SendTextMessage("[SERVER To CLIENT] Welcome on the server ");
 
                 //Adding user to lobby
                 _lobby = GetLobbyWithFreeSlot();
@@ -64,7 +64,10 @@ namespace MultiplayerFPS_Server
             Lobby newLobby = new Lobby();
             Thread newLobbyThread = new Thread(new ThreadStart(newLobby.Process));
             newLobbyThread.Start();
+
+            _lobbies.Add(newLobby);
             Console.WriteLine("[SERVER] Creating new lobby.");
+
             return newLobby;
         }
 

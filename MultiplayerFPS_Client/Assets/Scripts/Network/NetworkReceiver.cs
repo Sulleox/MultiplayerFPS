@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+
 using System.Text;
+using System.Collections.Generic;
+
 using Newtonsoft.Json;
 
 public class NetworkReceiver
@@ -18,10 +21,17 @@ public class NetworkReceiver
         {
             byte[] bytes = new byte[64000];
             int bytesRead = _user.NetworkStream.Read(bytes, 0, bytes.Length);
-            string json = Encoding.UTF8.GetString(bytes);
+            string receivedJson = Encoding.UTF8.GetString(bytes, 0, bytesRead-1);
 
-            Message receivedMessage = JsonConvert.DeserializeObject<Message>(json);
-            ReadMessage(receivedMessage);
+            string[] splittedJsonMessages = receivedJson.Split('\0');
+            //Debug.LogFormat("[CLIENT][NetworkReceiver] Json received count : {0}", splittedJsonMessages.Length);
+
+            for (int i = 0; i < splittedJsonMessages.Length; i++)
+            {
+                //Debug.LogFormat("[CLIENT][NetworkReceiver] Json received : {0}", splittedJsonMessages[i]);
+                Message receivedMessage = JsonConvert.DeserializeObject<Message>(splittedJsonMessages[i]);
+                ReadMessage(receivedMessage);
+            }
         }
     }
 
@@ -32,11 +42,19 @@ public class NetworkReceiver
             case MessageType.textMessage:
                 ReadTextMessage(message.TextMessage);
                 break;
+            case MessageType.lobbyStatus:
+                ReadLobbyStatusMessage(message.LobbyStatus);
+                break;
         }
     }
 
     public void ReadTextMessage(TextMessage textMessage)
     {
         Debug.LogFormat("[CLIENT][NetworkReceiver] Text message received : {0}", textMessage.Text);
+    }
+
+    public void ReadLobbyStatusMessage(LobbyStatusMessage lobbyStatus)
+    {
+        Debug.LogFormat("[CLIENT][NetworkReceiver] Lobby isAdmin : {0}, AdminID : {1}", lobbyStatus.IsAdmin, lobbyStatus.AdminID);
     }
 }

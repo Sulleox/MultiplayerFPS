@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Lobby\LobbyParameters.cs" />
+    <Compile Include="Network\LobbyStatusMessage.cs" />
     <Compile Include="Network\Message.cs" />
     <Compile Include="Network\NetworkSender.cs" />
     <Compile Include="Network\MessageType.cs" />

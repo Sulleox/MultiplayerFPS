@@ -33,7 +33,7 @@ namespace MultiplayerFPS_Server.UserLobby
         {
             get
             {
-                return (_maxUserNumber - _currentUserNumber) > 0;
+                return (_maxUserNumber - _currentUserNumber) == 0;
             }
         }
 
@@ -54,10 +54,17 @@ namespace MultiplayerFPS_Server.UserLobby
         {
             if(_userAdminID == -1)
             {
+                Console.WriteLine("[SERVER] [Lobby] Player added is lobby admin");
                 _userAdminID = user.UserID;
+                user.MessageSender.SendTextMessage("[SERVER To CLIENT] You have been added to a lobby as admin.");
+                user.MessageSender.SendLobbyStatusMessage(true, _userAdminID);
             }
-
-            user.MessageSender.SendMessage("[SERVER To CLIENT] You have been added to a lobby.");
+            else
+            {
+                Console.WriteLine("[SERVER] [Lobby] is not lobby admin");
+                user.MessageSender.SendTextMessage("[SERVER To CLIENT] You have been added to a lobby as player.");
+                user.MessageSender.SendLobbyStatusMessage(false, _userAdminID);
+            }
         }
     }
 }

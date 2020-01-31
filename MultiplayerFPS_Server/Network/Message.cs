@@ -7,5 +7,6 @@ namespace MultiplayerFPS_Server.Network
     {
         public MessageType Type { get; set; }
         public TextMessage TextMessage { get; set; }
+        public LobbyStatusMessage LobbyStatus { get; set; }
     }
 }

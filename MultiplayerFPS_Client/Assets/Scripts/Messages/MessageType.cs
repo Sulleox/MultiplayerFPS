@@ -2,5 +2,6 @@
 {
     debug = 0,
     textMessage = 1,
-    positionMessage = 2,
+    lobbyStatus = 2,
+    positionMessage = 3,
 };

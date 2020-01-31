@@ -5,4 +5,5 @@ public class Message
 {
     public MessageType Type { get; set; }
     public TextMessage TextMessage { get; set; }
+    public LobbyStatusMessage LobbyStatus { get; set; }
 }

@@ -15,7 +15,18 @@ namespace MultiplayerFPS_Server.Network
             _user = user;
         }
 
-        public void SendMessage(string text)
+        public void SendLobbyStatusMessage(bool isAdmin, int adminID)
+        {
+            Message message = new Message();
+            message.Type = MessageType.lobbyStatus;
+            message.LobbyStatus = new LobbyStatusMessage();
+            message.LobbyStatus.IsAdmin = isAdmin;
+            message.LobbyStatus.AdminID = adminID;
+
+            SendMessage(message);
+        }
+
+        public void SendTextMessage(string text)
         {
             Message message = new Message();
             message.Type = MessageType.textMessage;
@@ -27,11 +38,10 @@ namespace MultiplayerFPS_Server.Network
 
         public void SendMessage(Message message)
         {
-            string messageAsJson = JsonSerializer.Serialize<Message>(message);
+            string messageAsJson = JsonSerializer.Serialize(message) + '\0';
             byte[] JsonAsBytes = Encoding.UTF8.GetBytes(messageAsJson);
 
             _user.NetworkStream.Write(JsonAsBytes, 0, JsonAsBytes.Length);
-            Console.WriteLine("[SERVER] Sending message to client : " + messageAsJson);
         }
     }
 }
