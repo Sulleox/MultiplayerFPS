@@ -1,8 +1,8 @@
-﻿using System;
-using System.Text;
+﻿using UnityEngine;
+
+using System;
 using System.Net.Sockets;
 
-using UnityEngine;
 using System.Threading;
 
 public class NetworkManager : MonoBehaviour

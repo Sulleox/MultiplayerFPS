@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Text;
+using Newtonsoft.Json;
 
 public class NetworkReceiver
 {
@@ -15,10 +16,27 @@ public class NetworkReceiver
     {
         while(_user.Client.Connected)
         {
-            byte[] bytes = new byte[1024];
+            byte[] bytes = new byte[64000];
             int bytesRead = _user.NetworkStream.Read(bytes, 0, bytes.Length);
+            string json = Encoding.UTF8.GetString(bytes);
 
-            Debug.Log("[CLIENT] Received from server : " + Encoding.ASCII.GetString(bytes, 0, bytesRead));
+            Message receivedMessage = JsonConvert.DeserializeObject<Message>(json);
+            ReadMessage(receivedMessage);
         }
+    }
+
+    public void ReadMessage(Message message)
+    {
+        switch(message.Type)
+        {
+            case MessageType.textMessage:
+                ReadTextMessage(message.TextMessage);
+                break;
+        }
+    }
+
+    public void ReadTextMessage(TextMessage textMessage)
+    {
+        Debug.LogFormat("[CLIENT][NetworkReceiver] Text message received : {0}", textMessage.Text);
     }
 }

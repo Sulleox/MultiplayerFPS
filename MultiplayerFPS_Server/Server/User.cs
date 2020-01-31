@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using MultiplayerFPS_Server.Network;
+using System.Net.Sockets;
 
 namespace MultiplayerFPS_Server.Server
 {
@@ -22,6 +23,15 @@ namespace MultiplayerFPS_Server.Server
             }
         }
 
+        private NetworkSender _messageSender;
+        public NetworkSender MessageSender
+        {
+            get
+            {
+                return _messageSender;
+            }
+        }
+
         private int _userID;
         public int UserID
         {
@@ -36,6 +46,7 @@ namespace MultiplayerFPS_Server.Server
             _tcpClient = client;
             _networkStream = networkStream;
             _userID = userID;
+            _messageSender = new NetworkSender(this);
         }
     }
 }

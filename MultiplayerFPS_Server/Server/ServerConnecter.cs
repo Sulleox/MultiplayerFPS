@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 
 namespace MultiplayerFPS_Server
@@ -42,8 +41,7 @@ namespace MultiplayerFPS_Server
                 User newUser = new User(client, ns, GenerateNextUserID());
                 _users.Add(newUser);
 
-                byte[] sendBytes = Encoding.ASCII.GetBytes("[SERVER To CLIENT] Welcome on the server ");
-                ns.Write(sendBytes, 0, sendBytes.Length);
+                newUser.MessageSender.SendMessage("[SERVER To CLIENT] Welcome on the server ");
 
                 //Adding user to lobby
                 _lobby = GetLobbyWithFreeSlot();
